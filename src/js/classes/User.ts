@@ -1,7 +1,7 @@
 export class User {
-	public id: number;
-	public username: string;
-	public photoURL: string;
+	private id: number;
+	private username: string;
+	private photoURL: string;
 
 	constructor(id: number, username: string) {
 		this.id = id;
@@ -9,15 +9,15 @@ export class User {
 		this.photoURL = './src/images/avatar4.jpg';
 	}
 
-	getId(): number {
+	public getId(): number {
 		return this.id;
 	}
 
-	getUsername(): string {
+	public getUsername(): string {
 		return this.username;
 	}
 
-	getPhotoURL(): string {
+	public getPhotoURL(): string {
 		return this.photoURL;
 	}
 }
