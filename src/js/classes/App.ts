@@ -28,6 +28,8 @@ export class App {
 
 		// add comments
 		this.app.insertAdjacentHTML('beforeend', this.form.comments.render());
-		this.form.comments.showComments(false, 'date', false);
+		setTimeout(() => {
+			this.form.comments.showComments(false, 'date', false);
+		}, 100);
 	}
 }
