@@ -1,0 +1,22 @@
+@import "_fonts";
+
+@function remHandler($size) {
+	$remSize: calc($size/16px);
+	@return #{$remSize}rem;
+}
+
+// COLORS
+$grey: #D9D9D9;
+$grey-dark: #999999;
+$grey-light: #E6E6E6;
+$grey-dark2: #A1A1A1;
+$blue: #122AC0;
+$green: #8AC540;
+$green2: #ABD873;
+$red: #FF0000;
+$black: #000;
+$white: #fff;
+
+// FONTS
+$inter: "Inter-Regular";
+$inter-md: "Inter-Medium";

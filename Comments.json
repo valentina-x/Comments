@@ -1,0 +1,66 @@
+[
+	{
+		"id": "1",
+		"name": "Алексей_1994b",
+		"text": "Самое обидное когда сценарий по сути есть - в виде книг, где нет сюжетных дыр, всё логично, стройное повествование и достаточно взять и экранизировать оригинал как это было в первых фильмах с минимальным количеством отсебятины и зритель с восторгом примет любой такой фильм и сериал, однако вместо этого 'Кольца власти' просто позаимствовали имена из оригинала, куски истории, мало связанные между собой и выдали очередной среднячковый сериал на один раз в лучшем случае.",
+		"photo": "./src/images/avatar1.jpg",
+		"rating": 1,
+		"isFavorite": true,
+		"isReply": false,
+		"date": "11.08",
+		"time": "15:30",
+		"counterReplies": 1,
+		"replyData": {
+			"id": null,
+			"name": ""
+		}
+	},
+	{
+		"id": "2",
+		"name": "Джунбокс3000",
+		"text": "Наверное, самая большая ошибка создателей сериала была в том, что они поставили уж слишком много надежд на поддержку фанатов вселенной. Как оказалось на деле, большинство 'фанатов' с самой настоящей яростью и желчью стали уничтожать сериал, при этом объективности в отзывах самый минимум.",
+		"photo": "./src/images/avatar2.jpg",
+		"rating": 5,
+		"isFavorite": true,
+		"isReply": true,
+		"date": "11.08",
+		"time": "16:40",
+		"counterReplies": 0,
+		"replyData": {
+			"id": 1,
+			"name": "Алексей_1994b"
+		}
+	},
+	{
+		"id": "3",
+		"name": "Мистер_душнила",
+		"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, molestiae nemo incidunt modi quae beatae saepe aut voluptate neque accusantium. Neque incidunt mollitia optio aliquam autem quibusdam sequi necessitatibus aspernatur.",
+		"photo": "./src/images/avatar3.jpg",
+		"rating": -1,
+		"isFavorite": false,
+		"isReply": false,
+		"date": "11.08",
+		"time": "15:30",
+		"counterReplies": 0,
+		"replyData": {
+			"id": "",
+			"name": ""
+		}
+	},
+	{
+		"id": "4",
+		"name": "Lester",
+		"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, molestiae nemo incidunt modi quae beatae saepe aut voluptate neque accusantium. Neque incidunt mollitia optio aliquam autem quibusdam sequi necessitatibus aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, molestiae nemo incidunt modi quae beatae saepe aut voluptate neque accusantium. Neque incidunt mollitia optio aliquam autem quibusdam sequi necessitatibus aspernatur.",
+		"photo": "./src/images/avatar2.jpg",
+		"rating": 0,
+		"isFavorite": false,
+		"isReply": false,
+		"date": "10.08",
+		"time": "17:11",
+		"counterReplies": 0,
+		"replyData": {
+			"id": "",
+			"name": ""
+		}
+	}
+]

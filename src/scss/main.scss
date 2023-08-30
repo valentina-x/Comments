@@ -1,0 +1,447 @@
+@import "_reset";
+@import "_variables";
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	font-size: remHandler(18px);
+	font-family: $inter, Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+	display: grid;
+	grid-gap: 0;
+	grid-template-columns: 1fr;
+	grid-template-areas: "header""main";
+	grid-template-rows: auto 1fr auto;
+	height: 100%;
+}
+
+.header {
+	width: 100%;
+	height: remHandler(101px);
+	background-color: $grey;
+	grid-area: header;
+	margin-bottom: remHandler(40px);
+}
+
+.main {
+	grid-area: main;
+	display: flex;
+	align-items: flex-start;
+}
+
+.sidebar {
+	width: remHandler(203px);
+	height: 100%;
+	background-color: $grey;
+	display: flex;
+}
+
+.content {
+	width: remHandler(1022px);
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+
+.item {
+	width: remHandler(487px);
+	height: remHandler(61px);
+	background-color: $grey;
+	margin-bottom: remHandler(30px);
+	&--big {
+		width: 100%;
+		height: remHandler(168px);
+		margin-top: remHandler(10px);
+		margin-bottom: 0;
+	}
+}
+
+@media screen and (max-width: 1250px) {
+	.sidebar {
+		display: none;
+	}
+}
+@media screen and (max-width: 480px) {
+	.wrapper {
+		display: block;
+		height: auto;
+	}
+	
+	.header {
+		height: remHandler(101px);
+		margin-bottom: remHandler(40px);
+	}
+	
+	.main {
+		width: 100%;
+	}
+	
+	.content {
+		width: 90%;
+	}
+	
+	.item {
+		width: 100%;
+		height: remHandler(61px);
+		display: none;
+		&:nth-child(-n+3) {display: block;}
+		&--big {
+			height: remHandler(168px);
+			margin-top: remHandler(10px);
+			display: block;
+		}
+	}
+}
+
+// comments
+.app {
+	width: 100%;
+	margin-bottom: remHandler(105px);
+}
+
+.filter {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-top: remHandler(40px);
+	padding-top: remHandler(25px);
+	border-top: remHandler(3px) solid $grey;
+	&__btn {
+		display: flex;
+		align-items: center;
+		color: $grey-dark;
+		font-size: remHandler(16px);
+		line-height: 1;
+		margin-right: remHandler(55px);
+		& > * {pointer-events: none;}
+		&-title {
+			margin-right: remHandler(10px);
+			border-bottom: remHandler(1px) solid;
+			transition: color 0.4s, font-size 0.1s linear;
+		}
+		&-dop {
+			& svg {
+				width: remHandler(21px);
+				height: auto;
+				& path {
+					fill: $grey-dark;
+				}
+			}
+		}
+		&--types {
+			& svg {
+				width: remHandler(15px);
+			}
+		}
+		&:hover {
+			cursor: pointer;
+			& .filter__btn-title {
+				color: $black;
+			}
+		}
+		&.active {
+			border-bottom: remHandler(3px) solid $black;
+			padding-bottom: remHandler(5px);
+			& .filter__btn {
+				&-title {
+					font-size: remHandler(20px);
+					font-family: $inter-md;
+					color: $black;
+					border-color: transparent;
+				}
+				&-dop {
+					font-size: remHandler(20px);
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 480px) {
+		&__btn {
+			margin-right: remHandler(15px);
+			margin-bottom: remHandler(17px);
+			&:last-child {margin-right: 0;}
+			&--comments {
+				margin-right: remHandler(100px);
+			}
+			& svg {
+				width: remHandler(23px);
+			}
+		}
+	}
+}
+
+@mixin avatar() {
+	width: remHandler(61px);
+	height: remHandler(61px);
+	overflow: hidden;
+	border-radius: 100%;
+	margin-right: remHandler(30px);
+	& img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	@media screen and (max-width: 480px) {
+		width: remHandler(50px);
+		height: remHandler(50px);
+	}
+}
+
+@mixin name() {
+	color: $blue;
+	font-family: $inter-md;
+	margin-right: remHandler(15px);
+	@media screen and (max-width: 480px) {
+		margin: remHandler(-35px) 0 0 remHandler(71px);
+	}
+}
+
+.form {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	margin: remHandler(32px) 0 remHandler(40px);
+	position: relative;
+	&__avatar {
+		@include avatar();
+	}
+	&__txtblock {
+		width: remHandler(688px);
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	&__name {
+		@include name();
+	}
+	&__limit {
+		font-style: italic;
+		font-size: remHandler(14px);
+		line-height: remHandler(18px);
+		color: $grey-dark;
+		&-error {
+			color: red;
+			font-style: normal;
+			font-size: remHandler(14px);
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+	&__textarea {
+		width: 100%;
+		height: auto;
+		background-color: $white;
+		color: $black;
+		font-size: remHandler(18px);
+		padding: remHandler(20px) remHandler(30px) 0;
+		margin-top: remHandler(15px);
+		&::placeholder {
+			font-family: $inter;
+			font-weight: normal;
+			font-size: remHandler(18px);
+			color: $grey-dark;
+		}
+	}
+	&__textarea {
+		overflow: hidden;
+		outline: none;
+		border: none;
+		resize: none;
+		border-radius: remHandler(5px);
+		box-shadow: 0 0 remHandler(10px) rgba(0, 0, 0, 0.2);
+	}
+	&__send {
+		width: remHandler(213px);
+		height: remHandler(61px);
+		background-color: $green2;
+		font-size: remHandler(18px);
+		margin: remHandler(35px) 0 0 auto;
+		&:hover {
+			cursor: pointer;
+			background-color: darken($green2,  16%);
+		}
+		&:disabled {
+			color: $grey-dark;
+			background-color: $grey;
+			pointer-events: none;
+		}
+	}
+	&__send {
+		border: none;
+		border-radius: remHandler(5px);
+		transition: background-color .6s;
+	}
+	&--answer {
+		margin-left: remHandler(94px);
+		& .form {
+			&__txtblock {
+				width: remHandler(595px);
+			}
+		}
+	}
+	@media screen and (max-width: 480px) {
+		&__send {
+			width: 100%;
+			margin-top: remHandler(15px);
+		}
+		&__limit {
+			margin: remHandler(-20px) 0 0 auto;
+		}
+		&--answer {
+			margin-top: 0;
+			margin-left: 0;
+		}
+	}
+}
+
+.comment {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: remHandler(28px);
+	&__avatar {
+		@include avatar()
+	}
+	&__info {
+		width: remHandler(916px);
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+	}
+	&__name {
+		@include name();
+	}
+	&__date {
+		color: $grey-dark;
+		font-size: remHandler(14px);
+		line-height: remHandler(18px);
+	}
+	&__text {
+		width: 100%;
+		font-size: remHandler(18px);
+		margin: remHandler(10px) 0 remHandler(20px);
+		overflow: hidden;
+	}
+	&__button {
+		display: flex;
+		align-items: center;
+		color: $grey-dark;
+		line-height: remHandler(18px);
+		margin-right: remHandler(20px);
+		transition: all 0.6s;
+		&:hover {
+			cursor: pointer;
+			color: darken($grey-dark, 10%);
+		}
+		& svg {
+			width: auto;
+			max-width: remHandler(24px);
+			height: auto;
+			max-height: remHandler(18px);
+			fill: $grey-dark;
+			stroke: $grey-dark;
+			margin-right: remHandler(10px);
+			& path {
+				stroke: $grey-dark;
+			}
+		}
+		&--replyname {
+			pointer-events: none;
+		}
+		&--favorite {
+			& * {
+				pointer-events: none;
+			}
+			&.active {
+				& path {fill: $grey-dark;}
+			}
+		}
+		&-rate {
+			width: remHandler(20px);
+			height: remHandler(20px);
+			background-color: $grey-light;
+			line-height: 1;
+			font-family: $inter-md;
+			border: none;
+			border-radius: 100%;
+			overflow: hidden;
+			transition: background-color 0.6s;
+			&--minus {
+				color: $red;
+			}
+			&--plus {
+				color: $green;
+			}
+			&:hover {
+				cursor: pointer;
+				background-color: $grey;
+			}
+		}
+		&-num {
+			color: $green;
+			font-family: $inter-md;
+			margin: 0 remHandler(10px);
+		}
+	}
+	&--answer {
+		margin-left: remHandler(94px);
+		& .comment {
+			&__text {
+				width: remHandler(825px);
+			}
+		}
+	}
+	&--favorite {
+		margin-left: 0;
+	}
+	& .hidden {
+		display: none;
+		pointer-events: none;
+	}
+	@media screen and (max-width: 480px) {
+		flex-direction: column;
+		width: 100%;
+		max-width: remHandler(410px);
+		margin-bottom: remHandler(10px);
+		&__text {
+			width: 100%;
+			font-size: remHandler(16px);
+			margin-top: remHandler(15px);
+			margin-bottom: remHandler(25px);
+		}
+		&__info {
+			width: 100%;
+		}
+		&__button {
+			&--rate {
+				margin-top: remHandler(-21px);
+				margin-right: 0;
+				flex-direction: column-reverse;
+			}
+			&--replyname {
+				margin-top: remHandler(-5px);
+				margin-left: remHandler(70px);
+			}
+			&-num {
+				margin: remHandler(2px) 0;
+			}
+		}
+		&__date {
+			margin: remHandler(-35px) remHandler(10px) 0 auto;
+		}
+		&--answer {
+			margin-left: 0;
+		}
+	}
+}
+
+@import "_list";
