@@ -17,28 +17,29 @@ export class Comments {
 		`
 	}
 
-	public async addMockToLocalStorage(): Promise<void> {
-		try {
-			const response = await fetch('./Comments.json');
-			const data = await response.json();
-			const commentsFromFile: Comment[] = data;
-			const commentsFromLocalStorage: Comment[] = JSON.parse(localStorage.getItem('comments') || '[]');
+	public addMockToLocalStorage(): void {
+		fetch('./Comments.json')
+			.then(response => response.json())
+			.then(data => {
+				const commentsFromFile: Comment[] = data;
+				const commentsFromLocalStorage: Comment[] = JSON.parse(localStorage.getItem('comments') || '[]');
 
-			await Promise.all(commentsFromFile.map(async (comment) => {
-				comment.photo = await generateAvatar(comment.name);
-			}));
+				commentsFromFile.map((comment) => {
+					comment.photo = '';
+					comment.photo = generateAvatar(comment.name);
+				});
+		
+				if (commentsFromLocalStorage.length === 0) {
+					localStorage.setItem('comments', JSON.stringify(commentsFromFile));
+				} else {
+					commentsFromLocalStorage.push(data);
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
 
-			if (commentsFromLocalStorage.length === 0) {
-				localStorage.setItem('comments', JSON.stringify(commentsFromFile));
-			} else {
-				commentsFromLocalStorage.push(data);
-			}
-
-		} catch (error) {
-			console.error('Error:', error);
-		}
-
-		async function generateAvatar(name: string): Promise<string> {
+		function generateAvatar(name: string): string {
 			return `https://avatar.oxro.io/avatar.svg?name=${name}`;
 		}
 	}
